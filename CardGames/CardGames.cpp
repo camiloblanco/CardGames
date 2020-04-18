@@ -21,6 +21,18 @@
 /****************************************************************************************
 *									APPLICATION MAIN									*
 ****************************************************************************************/
+// Clear the whole console
+void clearConsole() {
+	//cout << "\x1B[2J\x1B[H"; //Linux
+	system("CLS"); //Windows
+}
+
+// Pause execution waiting for a key
+void menuPause() {
+	cout << endl << " Pres a Key and then Enter to continue..." << endl;
+	cin.ignore();
+	cin.get();
+}
 
 int main()
 
@@ -43,7 +55,8 @@ int main()
 		cout << endl << " Please enter the option number: ";
 		cin >> option;
 		if (option == 1) {
-			guessingGame.gameMenu();
+			guessingGame.newGame();
+			guessingGame.playGame();
 		}
 		if (option == 2) {
 			cout << "Spanish Veintiuna" << endl;
@@ -52,12 +65,9 @@ int main()
 			cout << endl << " Thank you for playing, have a nice day. " << endl << endl;
 		}
 		else {
-			cout << " Invalid Option" << endl;
-			cout << endl << " Press Enter to continue ..." << endl;
+			cout << " Invalid Option XXX" << endl;
 		}
-		cin.ignore();
-		cin.get();
-
+		menuPause();
 	}
 
 	return 0;

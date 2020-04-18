@@ -27,50 +27,119 @@
 Game::Game() {
 }
 
-// Clear the whole console
-void Game::clearConsole() {
-	//cout << "\x1B[2J\x1B[H"; // Linux
-	system("CLS"); // Windows
+
+void Game::newGame() {
+	m_deck.fillAsDeck();
+	m_playerHand.store(m_deck.deal());
 }
 
-// Pause execution waiting for a key
-void Game::menuPause() {
-	cout << endl << " Press Enter to continue ..." << endl;
+int Game::playGame() {
 	cin.ignore();
-	cin.get();
-}
-
-// Read a line from the console including spaces
-void Game::readLine(string& description) {
-	cin.ignore();
-	getline(cin, description);
-}
-
-//Main menu for accesing the CPlusPlus programs
-void Game::gameMenu() {
-
-	int option = 9;
-
-	while (option != 0) {
-		clearConsole();
-		cout << " ****************************************************************************" << endl;
-		cout << "			Cards Games : The Guessing Game							  " << endl;
-		cout << " ****************************************************************************" << endl << endl;
-		cout << " Select an option:" << endl << endl;
-		cout << " 1. Play Guess a hiden card!!!" << endl;
-		cout << " 0. Return to the main menu" << endl;
-		cout << " ****************************************************************************" << endl;
-		cout << endl << " Please enter the option number: ";
-		cin >> option;
-		if (option == 1) {
-			cout << "The game is loading ..." << endl;
+	string face;
+	string suit;
+	int gameCtr = 1;
+	while (gameCtr)
+	{
+		if (readCard(face,suit) == 0) {
+			return 0;
 		}
-		else if (option == 0) {
-			cout << endl << " Thank you for playing The Guessing Game		 " << endl << endl;
+		if (evaluateTurn(face, suit) == 1) {
+			cout <<endl << " > Congratulations you Won!!!" <<endl;
+			cout << endl << " Continue, [y]yes or [n]no? : ";
+			char option;
+			cin >> option;
+			if (option == 'y')
+				m_playerHand.store(m_deck.deal());
+			else
+				return 0;
+		}
+		else
+			cout << endl << " > You missed." << endl;
+	}
+}
+
+int Game::readCard(string& face, string& suit) {
+
+	string newFace;
+	string newSuit;
+
+	int loopCtr = 1;
+
+	while (loopCtr == 1) {
+		cout << endl << " Guess the card's face." << endl;
+		cout << " Type exactly one of these options, or \"quit\" to end: " << endl <<" ";
+		m_deck.printFaces();
+		cout << " Face Guess:  ";
+		getline(cin, newFace);
+		if (newFace.compare("quit")) {
+			if (m_deck.isValidFace(newFace) == 1) {
+				face = newFace;
+				loopCtr = 0;
+			}
+			else {
+				cout <<endl<< " > \""<< newFace<<"\" is not a valid card face, please try again. " << endl;
+				loopCtr = 1;
+			}
 		}
 		else {
-			cout << " Invalid Option" << endl;
+			return 0;
 		}
-		menuPause();
 	}
+
+	loopCtr = 1;
+
+	while (loopCtr == 1) {
+		cout << endl << " Guess the card's suit." << endl;
+		cout << " Type exactly one of these options, or \"quit\" to end: " << endl<< " ";
+		m_deck.printSuits();
+		cout << " Suits Guess:  ";
+		getline(cin, newSuit);
+		if (newSuit.compare("quit")) {
+			if (m_deck.isValidSuit(newSuit) == 1) {
+				suit = newSuit;
+				loopCtr = 0;
+			}
+			else {
+				cout << endl << " > \"" << newSuit << "\" is not a valid card suit, please try again. " << endl;
+				loopCtr = 1;
+			}
+		}
+		else {
+			return 0;
+		}
+	}
+	cout << endl << " >Your guess is: " << face << " of " << suit << "." << endl;
+	return 1;
+}
+
+
+int Game::evaluateTurn(string& face, string& suit) {
+	int hits = 0;
+	Card playerCard = m_playerHand.getLastCard();
+
+	//playerCard.print();
+	int cardValue = m_deck.getFaceValue(playerCard.getface());
+	int guessedValue = m_deck.getFaceValue(face);
+
+	//cout << "guessedValue: " << guessedValue << ", cardValue: " << cardValue << endl;
+		
+	if (guessedValue < cardValue) {
+		cout << " >The face \"" << face << "\" is too Low, please try again." << endl;
+	}
+	else if (guessedValue > cardValue) {
+		cout << " >The face \"" << face << "\" is too High, please try again." << endl;
+	}
+	else{
+		cout << " >The face \"" << face << "\" is correct." << endl;
+		++hits;
+	}
+
+	if (suit.compare(playerCard.getSuit()) == 0) {
+		cout << " >The suit \"" << suit << "\" is correct." << endl;
+		++hits;
+	}
+	else
+		cout << " >The suit \"" << suit << "\" is incorrect." << endl;
+
+	return (hits == 2 ? 1 : 0);
 }

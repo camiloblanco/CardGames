@@ -1,7 +1,7 @@
 /****************************************************************************************
 * Project		:	Card Games, a C++ Abstraction, Inheritance and Polymorphism Program.
 * License		:	Apache License Ver 2.0, www.apache.org/licenses/LICENSE-2.0
-* Description	:	Header file for the Game Class
+* Description	:	CPP file for implementarion of the Card Class.
 *
 * References	:	- Instruction by Dr Ling Ma <ling.ma@qmul.ac.uk>
 *					- Instruction by Dr Jeremy Gow <jeremy.gow@qmul.ac.uk>
@@ -14,37 +14,27 @@
 ****************************************************************************************/
 
 /****************************************************************************************
-*							#GUARDS #INCLUDES AND #CONSTANTS							*
+*								#INCLUDES AND #CONSTANTS								*
 ****************************************************************************************/
-#pragma once
-#include <iostream>
-#include <random>
-#include <string>
-#include <stdlib.h>
-#include "SetOfCards.h"
 
-using namespace std;
+#include "Card.h"
 
 /****************************************************************************************
-*									CLASS DECLARATION									*
+*									MEMBER FUNCTIONS									*
 ****************************************************************************************/
-class Game
-{
-public:
-	//constructors
-	Game();
-	void newGame();
-	int playGame();
-	int readCard(string &face, string &suit);
+//Constructors
+Card::Card() {}
+Card::Card(string suit, string face) : m_suit(suit), m_face(face) {}
 
+//public member functions
 
-private:
+//Get-Set functions
+string Card :: getSuit(){ return m_suit; }
+string Card :: getface(){ return m_face; }
 
-	int evaluateTurn(string& face, string& suit);
-	int m_number;
-	int m_validGuesses;
+//print function
+void Card::print() { cout << m_face << " of " << m_suit << endl; }
 
-	SetOfCards m_deck;
-	SetOfCards m_playerHand;
-};
+//Destructors
+Card::~Card(){}
 
