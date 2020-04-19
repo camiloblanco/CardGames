@@ -38,7 +38,7 @@ public:
 	void printStats();
 
 private:
-	int readCard(string& face, string& suit);
+	int playerPlay(string& face, string& suit);
 	int evaluateRound(string& face, string& suit);
 	void newRound();
 

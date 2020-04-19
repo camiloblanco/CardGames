@@ -65,12 +65,13 @@ int Game::playGame() {
 		cout << "					   Round:"<< m_round+1 <<"							  " << endl;
 		cout << " ********************************************************************************************" << endl << endl;
 		
-		//Start the round: Read a player's card guess, if "quit" input return 0
-		if (readCard(face, suit) == 0) {
+		//Start the round, Player Play: Read a player's card guess, if "quit" input return 0
+		if (playerPlay(face, suit) == 0) {
+			//The player has decided to quit
 			return 0;
 		}
 		else {
-			//A valid guess has been done, count it
+			//The player has done a valid guess
 			++m_round;
 		}
 		//Evaluate the round
@@ -111,7 +112,7 @@ void Game::printStats() {
 //****** Private functions *******
 
 // Prompt the user for a face and suit guess
-int Game::readCard(string& face, string& suit) {
+int Game::playerPlay(string& face, string& suit) {
 
 	string newFace;
 	string newSuit;
