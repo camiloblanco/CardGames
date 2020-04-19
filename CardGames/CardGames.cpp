@@ -47,7 +47,7 @@ int main()
 		cout << " ********************************************************************************************" << endl;
 		cout << "				Card Games Main Menu								  " << endl;
 		cout << " ********************************************************************************************" << endl << endl;
-		cout << " Select the Game you want to play, or exit.:" << endl << endl;
+		cout << " Select the Game you want to play, or [0]exit:" << endl << endl;
 		cout << " 1. Guess a hiden card!!!" << endl;
 		cout << " 2. Play Spanish Veintiuna" << endl;
 		cout << " 0. Exit" << endl;
@@ -67,7 +67,7 @@ int main()
 			menuPause();
 		}
 		else {
-			cout << " Invalid Option XXX" << endl;
+			cout << " Invalid Option" << endl;
 			menuPause();
 		}
 	}
