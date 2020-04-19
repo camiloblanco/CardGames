@@ -37,7 +37,7 @@ void menuPause() {
 int main()
 
 {
-	Game guessingGame;
+	Game<GuessingCardSet> guessingGame;
 
 
 	int option = 9;

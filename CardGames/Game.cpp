@@ -18,19 +18,24 @@
 ****************************************************************************************/
 
 #include "Game.h"
+#pragma once
+#ifndef _Game_CPP_
+#define _Game_CPP_
 
 /****************************************************************************************
 *									MEMBER FUNCTIONS									*
 ****************************************************************************************/
 
 //****** constructors *******
-Game::Game():m_round(0){
+template <class T>
+Game<T>::Game():m_round(0){
 }
 
 //****** Public functions *******
 
 // Prepare to start a new game
-void Game::newGame() {
+template <class T>
+void Game<T>::newGame() {
 
 	//Reset game stats
 	m_round = 0;
@@ -51,7 +56,8 @@ void Game::newGame() {
 }
 
 // Main function to play a game
-int Game::playGame() {
+template <class T>
+int Game<T>::playGame() {
 	// Variables to read the players guess
 	string face;
 	string suit;
@@ -96,7 +102,8 @@ int Game::playGame() {
 }
 
 // Print last round Stats
-void Game::printStats() {
+template <class T>
+void Game<T>::printStats() {
 	cout << endl << " ********************************************************************************************" << endl;
 	cout << "				 	  Game Stats " << endl;
 	cout << " Rounds: " << m_round << endl;
@@ -112,7 +119,8 @@ void Game::printStats() {
 //****** Private functions *******
 
 // Prompt the user for a face and suit guess
-int Game::playerPlay(string& face, string& suit) {
+template <class T>
+int Game<T>::playerPlay(string& face, string& suit) {
 
 	string newFace;
 	string newSuit;
@@ -167,7 +175,8 @@ int Game::playerPlay(string& face, string& suit) {
 }
 
 // Evaluate the face and suit given by the user
-int Game::evaluateRound(string& face, string& suit) {
+template <class T>
+int Game<T>::evaluateRound(string& face, string& suit) {
 	int hits = 0;
 	Card playerCard = m_playerHand.getLastCard();
 
@@ -200,7 +209,8 @@ int Game::evaluateRound(string& face, string& suit) {
 }
 
 // Prepare to start a new round
-void Game::newRound() {
+template <class T>
+void Game<T>::newRound() {
 	cin.ignore();
 	//Reset game stats
 	m_round = 0;
@@ -209,6 +219,4 @@ void Game::newRound() {
 	m_playerHand.store(m_deck.deal());
 }
 
-
-
-
+#endif

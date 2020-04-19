@@ -155,7 +155,9 @@
   <ItemGroup>
     <ClInclude Include="Card.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GuessingCardSet.h" />
     <ClInclude Include="SetOfCards.h" />
+    <ClInclude Include="VeintiunaCardSet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

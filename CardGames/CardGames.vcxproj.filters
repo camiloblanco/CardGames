@@ -38,5 +38,11 @@
     <ClInclude Include="SetOfCards.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GuessingCardSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VeintiunaCardSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

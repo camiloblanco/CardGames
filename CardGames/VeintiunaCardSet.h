@@ -1,7 +1,7 @@
 /****************************************************************************************
 * Project		:	Card Games, a C++ Abstraction, Inheritance and Polymorphism Program.
 * License		:	Apache License Ver 2.0, www.apache.org/licenses/LICENSE-2.0
-* Description	:	Header file for the Game Class
+* Description	:	Header and implementation file for the VeintiunaCardSet Class
 *
 * References	:	- Instruction by Dr Ling Ma <ling.ma@qmul.ac.uk>
 *					- Instruction by Dr Jeremy Gow <jeremy.gow@qmul.ac.uk>
@@ -17,38 +17,31 @@
 *							#GUARDS #INCLUDES AND #CONSTANTS							*
 ****************************************************************************************/
 #pragma once
-#include <iostream>
-#include <random>
-#include <string>
-#include <stdlib.h>
-#include "GuessingCardSet.h"
-
-using namespace std;
-
+#include "SetOfCards.h"
 /****************************************************************************************
 *									CLASS DECLARATION									*
 ****************************************************************************************/
-template <class T>
-class Game
+class VeintiunaCardSet :	public SetOfCards
 {
 public:
-	//constructors
-	Game();
-	void newGame();
-	int playGame();
-	void printStats();
-
-protected:
-	int playerPlay(string& face, string& suit);
-	int evaluateRound(string& face, string& suit);
-	void newRound();
-
-	T m_deck;
-	T m_playerHand;
-	T m_bankHand;
-	vector<string> m_results;
-	int m_round;
+	// Constructors
+	VeintiunaCardSet() {
+		m_suits = { "Clubs","Diamons","Hearts","Spades" };
+		m_faces = {
+			{"Ace",1},
+			{"Two",2},
+			{"Three",3},
+			{"Four",4},
+			{"Five",5},
+			{"Six",6},
+			{"Seven",7},
+			{"Eight",8},
+			{"Nine",9},
+			{"Ten",10},
+			{"Jack",10},
+			{"Queen",10},
+			{"King",10}
+		};
+	}
 };
-
-#include "Game.cpp"
 

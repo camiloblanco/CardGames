@@ -58,7 +58,7 @@ public:
 	//Destructors
 	~SetOfCards();
 
-private:
+protected:
 
 	// private member functions
 
