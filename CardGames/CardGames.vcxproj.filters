@@ -27,6 +27,9 @@
     <ClCompile Include="SetOfCards.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GuessingGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -36,6 +39,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SetOfCards.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GuessingCardSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VeintiunaCardSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GuessingGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

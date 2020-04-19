@@ -1,7 +1,7 @@
 /****************************************************************************************
 * Project		:	Card Games, a C++ Abstraction, Inheritance and Polymorphism Program.
 * License		:	Apache License Ver 2.0, www.apache.org/licenses/LICENSE-2.0
-* Description	:	Header file for the SetOfCards Class
+* Description	:	Header and implementation file for the VeintiunaCardSet Class
 *
 * References	:	- Instruction by Dr Ling Ma <ling.ma@qmul.ac.uk>
 *					- Instruction by Dr Jeremy Gow <jeremy.gow@qmul.ac.uk>
@@ -17,55 +17,31 @@
 *							#GUARDS #INCLUDES AND #CONSTANTS							*
 ****************************************************************************************/
 #pragma once
-#include<iostream>
-#include<string>
-#include<vector>
-#include<map>
-#include <algorithm>
-#include <random>       
-#include <chrono>       
-#include "Card.h"
-using namespace std;
+#include "SetOfCards.h"
 /****************************************************************************************
 *									CLASS DECLARATION									*
 ****************************************************************************************/
-
-class SetOfCards
+class VeintiunaCardSet :	public SetOfCards
 {
 public:
-	//Constructors
-	SetOfCards();
-
-	//public member functions
-
-	void store(Card cardObj);
-	void suffle();
-	Card deal();
-	Card getLastCard();
-	int getFaceValue(string face);
-	int valuate();
-
-	void printSet();
-	void printSuits();
-	void printFaces();
-
-	void emptySet();
-	void fillAsDeck();
-
-	int isValidSuit(string word);
-	int isValidFace(string word);
-
-	//Destructors
-	~SetOfCards();
-
-protected:
-
-	// private member functions
-
-	// member variables
-	vector<Card> m_set; //Vector of Cards to represent Any set of cards (Decks, Hands, Etc)
-	vector <string> m_suits; //Vector for suits names
-	map<string, int> m_faces; //A map for face names ans specific values for the game
-	
+	// Constructors
+	VeintiunaCardSet() {
+		m_suits = { "Clubs","Diamons","Hearts","Spades" };
+		m_faces = {
+			{"Ace",1},
+			{"Two",2},
+			{"Three",3},
+			{"Four",4},
+			{"Five",5},
+			{"Six",6},
+			{"Seven",7},
+			{"Eight",8},
+			{"Nine",9},
+			{"Ten",10},
+			{"Jack",10},
+			{"Queen",10},
+			{"King",10}
+		};
+	}
 };
 

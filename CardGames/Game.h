@@ -21,30 +21,33 @@
 #include <random>
 #include <string>
 #include <stdlib.h>
-#include "SetOfCards.h"
+#include "GuessingCardSet.h"
 
 using namespace std;
 
 /****************************************************************************************
 *									CLASS DECLARATION									*
 ****************************************************************************************/
+template <class T>
 class Game
 {
 public:
 	//constructors
 	Game();
 	void newGame();
-	int playGame();
+	virtual int playGame()=0;
 	void printStats();
 
-private:
-	int readCard(string& face, string& suit);
-	int evaluateRound(string& face, string& suit);
-	void newRound();
+protected:
+	virtual int playerPlay(string& face, string& suit)=0;
+	virtual void newRound()=0;
 
-	SetOfCards m_deck;
-	SetOfCards m_playerHand;
+	T m_deck;
+	T m_playerHand;
+	T m_bankHand;
 	vector<string> m_results;
 	int m_round;
 };
+
+#include "Game.cpp"
 
