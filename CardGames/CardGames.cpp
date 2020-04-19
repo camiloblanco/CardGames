@@ -29,7 +29,7 @@ void clearConsole() {
 
 // Pause execution waiting for a key
 void menuPause() {
-	cout << endl << " Pres a Key and then Enter to continue..." << endl;
+	cout << endl << " Press any key and then Enter to continue..." << endl;
 	cin.ignore();
 	cin.get();
 }
@@ -44,31 +44,32 @@ int main()
 
 	while (option != 0) {
 		system("CLS");
-		cout << " ****************************************************************************" << endl;
-		cout << "				Card Games								  " << endl;
-		cout << " ****************************************************************************" << endl << endl;
+		cout << " ********************************************************************************************" << endl;
+		cout << "				Card Games Main Menu								  " << endl;
+		cout << " ********************************************************************************************" << endl << endl;
 		cout << " Select the Game you want to play, or exit.:" << endl << endl;
 		cout << " 1. Guess a hiden card!!!" << endl;
 		cout << " 2. Play Spanish Veintiuna" << endl;
 		cout << " 0. Exit" << endl;
-		cout << " ****************************************************************************" << endl;
+		cout << " ********************************************************************************************" << endl;
 		cout << endl << " Please enter the option number: ";
 		cin >> option;
 		if (option == 1) {
 			guessingGame.newGame();
 			guessingGame.playGame();
 		}
-		if (option == 2) {
+		else if (option == 2) {
 			cout << "Spanish Veintiuna" << endl;
+			menuPause();
 		}
 		else if (option == 0) {
 			cout << endl << " Thank you for playing, have a nice day. " << endl << endl;
+			menuPause();
 		}
 		else {
 			cout << " Invalid Option XXX" << endl;
+			menuPause();
 		}
-		menuPause();
 	}
-
 	return 0;
 }

@@ -22,6 +22,8 @@
 #include<vector>
 #include<map>
 #include <algorithm>
+#include <random>       
+#include <chrono>       
 #include "Card.h"
 using namespace std;
 /****************************************************************************************

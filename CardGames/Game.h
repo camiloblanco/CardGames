@@ -35,16 +35,16 @@ public:
 	Game();
 	void newGame();
 	int playGame();
-	int readCard(string &face, string &suit);
-
+	void printStats();
 
 private:
-
-	int evaluateTurn(string& face, string& suit);
-	int m_number;
-	int m_validGuesses;
+	int readCard(string& face, string& suit);
+	int evaluateRound(string& face, string& suit);
+	void newRound();
 
 	SetOfCards m_deck;
 	SetOfCards m_playerHand;
+	vector<string> m_results;
+	int m_round;
 };
 
