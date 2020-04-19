@@ -35,13 +35,12 @@ public:
 	//constructors
 	Game();
 	void newGame();
-	int playGame();
+	virtual int playGame()=0;
 	void printStats();
 
 protected:
-	int playerPlay(string& face, string& suit);
-	int evaluateRound(string& face, string& suit);
-	void newRound();
+	virtual int playerPlay(string& face, string& suit)=0;
+	virtual void newRound()=0;
 
 	T m_deck;
 	T m_playerHand;

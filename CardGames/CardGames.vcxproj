@@ -150,12 +150,14 @@
     <ClCompile Include="CardGames.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GuessingGame.cpp" />
     <ClCompile Include="SetOfCards.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GuessingCardSet.h" />
+    <ClInclude Include="GuessingGame.h" />
     <ClInclude Include="SetOfCards.h" />
     <ClInclude Include="VeintiunaCardSet.h" />
   </ItemGroup>
