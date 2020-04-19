@@ -1,7 +1,7 @@
 /****************************************************************************************
 * Project		:	Card Games, a C++ Abstraction, Inheritance and Polymorphism Program.
 * License		:	Apache License Ver 2.0, www.apache.org/licenses/LICENSE-2.0
-* Description	:	Header file for the Game Class
+* Description	:	Header file for the Card Class
 *
 * References	:	- Instruction by Dr Ling Ma <ling.ma@qmul.ac.uk>
 *					- Instruction by Dr Jeremy Gow <jeremy.gow@qmul.ac.uk>
@@ -17,34 +17,34 @@
 *							#GUARDS #INCLUDES AND #CONSTANTS							*
 ****************************************************************************************/
 #pragma once
-#include <iostream>
-#include <random>
-#include <string>
-#include <stdlib.h>
-#include "SetOfCards.h"
-
+#include<iostream>
+#include<string>
 using namespace std;
-
 /****************************************************************************************
 *									CLASS DECLARATION									*
 ****************************************************************************************/
-class Game
+
+class Card
 {
 public:
-	//constructors
-	Game();
-	void newGame();
-	int playGame();
-	void printStats();
+
+	//Constructors
+	Card();
+	Card(string suit, string face);
+
+	//public member functions
+	string getSuit();
+	string getface();
+	void print();
+
+	//Destructors
+	~Card();
 
 private:
-	int readCard(string& face, string& suit);
-	int evaluateRound(string& face, string& suit);
-	void newRound();
 
-	SetOfCards m_deck;
-	SetOfCards m_playerHand;
-	vector<string> m_results;
-	int m_round;
+	// private member functions
+	
+	// member variables
+	string m_suit, m_face;
 };
 

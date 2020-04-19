@@ -1,7 +1,7 @@
 /****************************************************************************************
 * Project		:	Card Games, a C++ Abstraction, Inheritance and Polymorphism Program.
 * License		:	Apache License Ver 2.0, www.apache.org/licenses/LICENSE-2.0
-* Description	:	Header file for the Game Class
+* Description	:	Header file for the SetOfCards Class
 *
 * References	:	- Instruction by Dr Ling Ma <ling.ma@qmul.ac.uk>
 *					- Instruction by Dr Jeremy Gow <jeremy.gow@qmul.ac.uk>
@@ -17,34 +17,55 @@
 *							#GUARDS #INCLUDES AND #CONSTANTS							*
 ****************************************************************************************/
 #pragma once
-#include <iostream>
-#include <random>
-#include <string>
-#include <stdlib.h>
-#include "SetOfCards.h"
-
+#include<iostream>
+#include<string>
+#include<vector>
+#include<map>
+#include <algorithm>
+#include <random>       
+#include <chrono>       
+#include "Card.h"
 using namespace std;
-
 /****************************************************************************************
 *									CLASS DECLARATION									*
 ****************************************************************************************/
-class Game
+
+class SetOfCards
 {
 public:
-	//constructors
-	Game();
-	void newGame();
-	int playGame();
-	void printStats();
+	//Constructors
+	SetOfCards();
+
+	//public member functions
+
+	void store(Card cardObj);
+	void suffle();
+	Card deal();
+	Card getLastCard();
+	int getFaceValue(string face);
+	int valuate();
+
+	void printSet();
+	void printSuits();
+	void printFaces();
+
+	void emptySet();
+	void fillAsDeck();
+
+	int isValidSuit(string word);
+	int isValidFace(string word);
+
+	//Destructors
+	~SetOfCards();
 
 private:
-	int readCard(string& face, string& suit);
-	int evaluateRound(string& face, string& suit);
-	void newRound();
 
-	SetOfCards m_deck;
-	SetOfCards m_playerHand;
-	vector<string> m_results;
-	int m_round;
+	// private member functions
+
+	// member variables
+	vector<Card> m_set; //Vector of Cards to represent Any set of cards (Decks, Hands, Etc)
+	vector <string> m_suits; //Vector for suits names
+	map<string, int> m_faces; //A map for face names ans specific values for the game
+	
 };
 
