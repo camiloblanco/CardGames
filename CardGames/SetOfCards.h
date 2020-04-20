@@ -43,6 +43,7 @@ public:
 	Card deal();
 	Card getLastCard();
 	int getFaceValue(string face);
+	int getSetSize();
 	int valuate();
 
 	void printSet();

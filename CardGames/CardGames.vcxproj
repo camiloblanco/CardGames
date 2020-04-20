@@ -152,6 +152,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GuessingGame.cpp" />
     <ClCompile Include="SetOfCards.cpp" />
+    <ClCompile Include="VeintiunaGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h" />
@@ -160,6 +161,7 @@
     <ClInclude Include="GuessingGame.h" />
     <ClInclude Include="SetOfCards.h" />
     <ClInclude Include="VeintiunaCardSet.h" />
+    <ClInclude Include="VeintiunaGame.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

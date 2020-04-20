@@ -73,6 +73,9 @@ Card SetOfCards::getLastCard() {
 // function to Get the value of a given face
 int SetOfCards::getFaceValue(string face) {	return m_faces[face];}
 
+// function to Get the number of cards in m_set
+int SetOfCards::getSetSize(){ return m_set.size();}
+
 // function to Add all Cards points on m_set
 int SetOfCards::valuate(){
 	int totalValue = 0;
