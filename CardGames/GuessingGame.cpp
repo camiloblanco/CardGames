@@ -1,7 +1,6 @@
 #include "GuessingGame.h"
 
-// Main function to play a game
-
+// Main function to play a Guessing Game.
 int GuessingGame::playGame() {
 	// Variables to read the players guess
 	string face;
@@ -38,6 +37,7 @@ int GuessingGame::playGame() {
 				cout << endl << " Continue [y]yes?, any other key to [e]end : ";
 				char option;
 				cin >> option;
+				option = tolower(option);
 				if (option == 'y')
 					newRound();
 				else
@@ -53,21 +53,23 @@ int GuessingGame::playGame() {
 	return 0;
 }
 
-// Prompt the user for a face and suit guess
-
+// Function to read the player guess for a face and suit
 int GuessingGame::playerPlay(string& face, string& suit) {
 
 	string newFace;
 	string newSuit;
 
-	int loopCtr = 1;
-
+	int loopCtr = 1; 
+	//Read the player guessed card's face
 	while (loopCtr == 1) {
 		cout << endl << " Guess the card's face." << endl;
 		cout << " Type exactly one of these options, or \"quit\" to end: " << endl << " ";
 		m_deck.printFaces();
+		//Read the guess and put all caracters in lowercase
 		cout << " Face Guess?:  ";
 		getline(cin, newFace);
+		transform(newFace.begin(), newFace.end(), newFace.begin(), ::tolower);
+		//Evaluate the user input
 		if (newFace.compare("quit")) {
 			if (m_deck.isValidFace(newFace) == 1) {
 				face = newFace;
@@ -84,13 +86,16 @@ int GuessingGame::playerPlay(string& face, string& suit) {
 	}
 
 	loopCtr = 1;
-
+	//Read the player guessed card's suit
 	while (loopCtr == 1) {
 		cout << endl << " Guess the card's suit." << endl;
 		cout << " Type exactly one of these options, or \"quit\" to end: " << endl << " ";
 		m_deck.printSuits();
+		//Read the guess and put all caracters in lowercase
 		cout << " Suits Guess?:  ";
 		getline(cin, newSuit);
+		transform(newSuit.begin(), newSuit.end(), newSuit.begin(), ::tolower);
+		// Evaluate the user input
 		if (newSuit.compare("quit")) {
 			if (m_deck.isValidSuit(newSuit) == 1) {
 				suit = newSuit;
@@ -112,15 +117,15 @@ int GuessingGame::playerPlay(string& face, string& suit) {
 // Evaluate the face and suit given by the user
 
 int GuessingGame::evaluateRound(string& face, string& suit) {
+	//Initialize and read variables
 	int hits = 0;
 	Card playerCard = m_playerHand.getLastCard();
-
-
 	int cardValue = m_deck.getFaceValue(playerCard.getface());
 	int guessedValue = m_deck.getFaceValue(face);
 
 	cout << endl << " ********************************************************************************************" << endl;
 	cout << "					Round Results " << endl;
+	//print face results	
 	cout << endl << " Your guess is: " << face << " of " << suit << "." << endl;
 	if (guessedValue < cardValue) {
 		cout << " > The face \"" << face << "\" is too Low." << endl;
@@ -132,19 +137,18 @@ int GuessingGame::evaluateRound(string& face, string& suit) {
 		cout << " > The face \"" << face << "\" is correct." << endl;
 		++hits;
 	}
-
+	//print suits results
 	if (suit.compare(playerCard.getSuit()) == 0) {
 		cout << " > The suit \"" << suit << "\" is correct." << endl;
 		++hits;
 	}
 	else
 		cout << " > The suit \"" << suit << "\" is incorrect." << endl;
-
+	//comptact if : if hits == 2, return 1, else, return 0.
 	return (hits == 2 ? 1 : 0);
 }
 
 // Prepare to start a new round
-
 void GuessingGame::newRound() {
 	//cin.ignore();
 	//Reset game stats

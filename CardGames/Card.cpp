@@ -33,7 +33,7 @@ string Card :: getSuit(){ return m_suit; }
 string Card :: getface(){ return m_face; }
 
 //print function
-void Card::print() { cout << m_face << " of " << m_suit << endl; }
+void Card::print() { cout <<" -"<< m_face << " of " << m_suit << endl; }
 
 //Destructors
 Card::~Card(){}

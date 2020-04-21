@@ -26,22 +26,20 @@ class GuessingCardSet :	public SetOfCards
 public:
 	// Constructors
 	GuessingCardSet(){
-		m_suits = { "Clubs","Diamons","Hearts","Spades" };
 		m_faces = {
-			{"Ace",1},
-			{"Two",2},
-			{"Three",3},
-			{"Four",4},
-			{"Five",5},
-			{"Six",6},
-			{"Seven",7},
-			{"Eight",8},
-			{"Nine",9},
-			{"Ten",10},
-			{"Jack",11},
-			{"Queen",12},
-			{"King",13}
+			{"ace",1},
+			{"two",2},
+			{"three",3},
+			{"four",4},
+			{"five",5},
+			{"six",6},
+			{"seven",7},
+			{"eight",8},
+			{"nine",9},
+			{"ten",10},
+			{"jack",11},
+			{"queen",12},
+			{"king",13}
 		};
 	}
 };
-

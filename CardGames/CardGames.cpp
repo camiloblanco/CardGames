@@ -49,9 +49,10 @@ int main()
 		cout << "				Card Games Main Menu								  " << endl;
 		cout << " ********************************************************************************************" << endl << endl;
 		cout << " Select the Game you want to play, or [0]exit:" << endl << endl;
-		cout << " 1. Guess a hiden card!!!" << endl;
+		cout << " 1. Guess a hiden card." << endl;
 		cout << " 2. Play Twenty-One." << endl;
 		cout << " 0. Exit" << endl;
+		cout << " Note: In the games you can type \"quit\" at any time to return to this menu." << endl;
 		cout << " ********************************************************************************************" << endl;
 		cout << endl << " Please enter the option number: ";
 		cin >> option;
