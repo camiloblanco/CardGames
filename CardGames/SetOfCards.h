@@ -65,7 +65,7 @@ protected:
 
 	// member variables
 	vector<Card> m_set; //Vector of Cards to represent Any set of cards (Decks, Hands, Etc)
-	vector <string> m_suits; //Vector for suits names
+	const vector <string> m_suits = { "clubs","diamonds","hearts","spades" }; //Vector for suits names
 	map<string, int> m_faces; //A map for face names ans specific values for the game
 	
 };

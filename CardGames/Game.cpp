@@ -71,6 +71,17 @@ void Game<T>::printStats() {
 	}
 }
 
+
+// Print last round Stats
+template <class T>
+void Game<T>::pauseAndPoint(int numPoints) {
+	//dealy and point printing to mimic the Bank thinking
+	for (int i = 0; i < numPoints; ++i) {
+		this_thread::sleep_for(chrono::seconds(1));
+		cout << ". " ;
+	}
+}
+
 //****** Private functions *******
 
 #endif

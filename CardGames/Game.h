@@ -21,6 +21,8 @@
 #include <random>
 #include <string>
 #include <stdlib.h>
+#include <chrono>
+#include <thread>
 #include "GuessingCardSet.h"
 #include "VeintiunaCardSet.h"
 
@@ -40,6 +42,8 @@ public:
 	void printStats();
 
 protected:
+
+	void pauseAndPoint(int numPoints);
 
 	T m_deck;
 	T m_playerHand;

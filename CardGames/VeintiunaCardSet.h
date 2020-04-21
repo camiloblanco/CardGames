@@ -26,21 +26,20 @@ class VeintiunaCardSet :	public SetOfCards
 public:
 	// Constructors
 	VeintiunaCardSet() {
-		m_suits = { "Clubs","Diamons","Hearts","Spades" };
 		m_faces = {
-			{"Ace",1},
-			{"Two",2},
-			{"Three",3},
-			{"Four",4},
-			{"Five",5},
-			{"Six",6},
-			{"Seven",7},
-			{"Eight",8},
-			{"Nine",9},
-			{"Ten",10},
-			{"Jack",10},
-			{"Queen",10},
-			{"King",10}
+			{"ace",1},
+			{"two",2},
+			{"three",3},
+			{"four",4},
+			{"five",5},
+			{"six",6},
+			{"seven",7},
+			{"eight",8},
+			{"nine",9},
+			{"ten",10},
+			{"jack",10},
+			{"queen",10},
+			{"king",10}
 		};
 	}
 };
