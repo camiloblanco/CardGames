@@ -14,11 +14,12 @@ int VeintiunaGame::playGame() {
 		cout << "				Twenty-One Game. Round:" << m_round + 1 << "							  " << endl;
 		cout << " ********************************************************************************************" << endl << endl;
 		newRound();
-		if (playerPlay() == -1) {
+		int PlayerPoints = playerPlay();
+		if (PlayerPoints == -1) {
 			//The player has decided to quit
 			gameCtr = 0;
 		}
-		else if (m_playerHand.valuate() == 0)
+		else if (PlayerPoints == 0)
 		{
 			//The player got busted, bank wins
 			m_results.push_back("lost");
@@ -32,21 +33,26 @@ int VeintiunaGame::playGame() {
 		{
 			if (m_playerHand.valuate() > m_bankHand.valuate()) {
 				//The player got more points than the bank, wins
+				cout << endl << " > The player has more points than the bank, you win!!!" << endl;
 				m_results.push_back("won");
 			}else if (m_playerHand.valuate() < m_bankHand.valuate()) {
 				//The player got less points than the bank, losses
+				cout << endl << " > The player has less points than the bank, you lose." << endl;
 				m_results.push_back("lost");
 			}
 			else if (m_playerHand.getSetSize() > m_bankHand.getSetSize()) {
 				//Same points, but The player got more cards than the bank, wins
+				cout << endl << " > Same points, but The player has more cards, you win!!!" << endl;
 				m_results.push_back("won");
 			}
 			else if (m_playerHand.getSetSize() < m_bankHand.getSetSize()) {
 				//Same points, but The player got less cards than the bank, loses
+				cout << endl << " > Same points, but The player has less cards, you lose." << endl;
 				m_results.push_back("lost");
 			}
 			else {
 				//Full tie, the player wins
+				cout << endl << " >Full tie, you win!!!" << endl;
 				m_results.push_back("won");
 			}
 		}
@@ -60,12 +66,16 @@ int VeintiunaGame::playGame() {
 int VeintiunaGame::playerPlay() {
 	char option = 't';
 	int gameCtr = 1;
-	while (gameCtr){
+	while (gameCtr==1){
 		if (m_playerHand.valuate() > 21) {
+			cout << endl << "Your hand is:" << endl;
+			m_playerHand.printSet();
+			cout << "Value: " << m_playerHand.valuate() << endl;
+			cout << endl << " > The player got BUST!!!" << endl;
 			return 0;
 		}
 		else {
-			cout << "Your hand is:" << endl;
+			cout << endl << "Your hand is:" << endl;
 			m_playerHand.printSet();
 			cout << "Value: " << m_playerHand.valuate() << endl;
 			cout << "[s]tick or [t]twist? ";
@@ -93,23 +103,27 @@ int VeintiunaGame::playerPlay() {
 int VeintiunaGame::bankPlay() {
 
 	int gameCtr = 1;
-	while (gameCtr) {
+	while (gameCtr==1) {
 		if (m_bankHand.valuate() > 21) {
+			cout << endl << "The Bank hand is:" << endl;
+			m_bankHand.printSet();
+			cout << "Value: " << m_bankHand.valuate() << endl;
+			cout << endl << " > The Bank got BUST!!!" << endl;
 			return 0;
 		}
 		else {
-			cout << "The bank hand is:" << endl;
+			cout << endl << "The Bank hand is:" << endl;
 			m_bankHand.printSet();
 			cout << "Value: " << m_bankHand.valuate() << endl;
 			cout << "[s]tick or [t]twist? ";
 			
 			if (m_bankHand.valuate() < m_playerHand.valuate()) {
-				cout << "t";
+				cout << "t"<<endl;
 				m_bankHand.store(m_deck.deal());
 			}
 			else  {
-				cout << "s";
-				int gameCtr = 0;
+				cout << "s"<<endl;
+				gameCtr = 0;
 			}
 		}
 	}
