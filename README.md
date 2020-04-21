@@ -1,6 +1,6 @@
 # Card Games
 
-* Project		  :	Card Games, a C++ Abstraction, Inheritance and Polymorphism Program.
+* Project		  :	Card Games, a C++ Templates, Abstraction, Inheritance and Polymorphism Program.
 * License		  :	Apache License Ver 2.0, www.apache.org/licenses/LICENSE-2.0
 * Description	:	C++ terminal program developed with Microsoft Visual Studio Community 2019, with two simple card games.
   - Instruction by Dr Ling Ma <ling.ma@qmul.ac.uk>
