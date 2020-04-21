@@ -14,37 +14,43 @@ int GuessingGame::playGame() {
 	while (gameCtr)
 	{
 		cout << endl << " ********************************************************************************************" << endl;
-		cout << "					   Round:" << m_round + 1 << "							  " << endl;
+		cout << "				Guessing Game. Round:" << m_round + 1 << "							  " << endl;
 		cout << " ********************************************************************************************" << endl << endl;
 
-		//Start the round, Player Play: Read a player's card guess, if "quit" input return 0
-		if (playerPlay(face, suit) == 0) {
-			//The player has decided to quit
-			return 0;
+		if (m_deck.getSetSize() == 0) {
+			gameCtr = 0;
 		}
 		else {
-			//The player has done a valid guess
-			++m_round;
-		}
-		//Evaluate the round
-		if (evaluateRound(face, suit) == 1) {
-			cout << " Congratulations you Won!!!" << endl;
-			m_results.push_back("won");
-			printStats();
-			cout << endl << " Continue [y]yes?, any other key to [e]end : ";
-			char option;
-			cin >> option;
-			if (option == 'y')
-				newRound();
-			else
-				return 0;
-		}
-		else {
-			cout << " You missed." << endl;
-			m_results.push_back("lost");
-			printStats();
+			//Start the round, Player Play: Read a player's card guess, if "quit" input return 0
+			if (playerPlay(face, suit) == -1) {
+				//The player has decided to quit
+				gameCtr = 0;
+			}
+			else {
+				//The player has done a valid guess
+				++m_round;
+			}
+			//Evaluate the round
+			if (evaluateRound(face, suit) == 1) {
+				cout << " Congratulations you Won!!!" << endl;
+				m_results.push_back("won");
+				printStats();
+				cout << endl << " Continue [y]yes?, any other key to [e]end : ";
+				char option;
+				cin >> option;
+				if (option == 'y')
+					newRound();
+				else
+					return 0;
+			}
+			else {
+				cout << " You missed." << endl;
+				m_results.push_back("lost");
+				printStats();
+			}
 		}
 	}
+	return 0;
 }
 
 // Prompt the user for a face and suit guess
@@ -73,7 +79,7 @@ int GuessingGame::playerPlay(string& face, string& suit) {
 			}
 		}
 		else {
-			return 0;
+			return -1;
 		}
 	}
 
@@ -96,7 +102,7 @@ int GuessingGame::playerPlay(string& face, string& suit) {
 			}
 		}
 		else {
-			return 0;
+			return -1;
 		}
 	}
 

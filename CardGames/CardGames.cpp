@@ -17,6 +17,7 @@
 *								#INCLUDES AND #CONSTANTS								*
 ****************************************************************************************/
 #include "GuessingGame.h"
+#include "VeintiunaGame.h"
 
 /****************************************************************************************
 *									APPLICATION MAIN									*
@@ -38,7 +39,7 @@ int main()
 
 {
 	GuessingGame guessingGame;
-
+	VeintiunaGame veintiunaGame;
 
 	int option = 9;
 
@@ -49,7 +50,7 @@ int main()
 		cout << " ********************************************************************************************" << endl << endl;
 		cout << " Select the Game you want to play, or [0]exit:" << endl << endl;
 		cout << " 1. Guess a hiden card!!!" << endl;
-		cout << " 2. Play Spanish Veintiuna" << endl;
+		cout << " 2. Play Twenty-One." << endl;
 		cout << " 0. Exit" << endl;
 		cout << " ********************************************************************************************" << endl;
 		cout << endl << " Please enter the option number: ";
@@ -59,8 +60,8 @@ int main()
 			guessingGame.playGame();
 		}
 		else if (option == 2) {
-			cout << "Spanish Veintiuna" << endl;
-			menuPause();
+			veintiunaGame.newGame();
+			veintiunaGame.playGame();
 		}
 		else if (option == 0) {
 			cout << endl << " Thank you for playing, have a nice day. " << endl << endl;

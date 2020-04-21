@@ -22,6 +22,7 @@
 #include <string>
 #include <stdlib.h>
 #include "GuessingCardSet.h"
+#include "VeintiunaCardSet.h"
 
 using namespace std;
 
@@ -39,8 +40,6 @@ public:
 	void printStats();
 
 protected:
-	virtual int playerPlay(string& face, string& suit)=0;
-	virtual void newRound()=0;
 
 	T m_deck;
 	T m_playerHand;
