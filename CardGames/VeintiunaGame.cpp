@@ -1,8 +1,28 @@
+/****************************************************************************************
+* Project		:	Card Games, a C++ Abstraction, Inheritance and Polymorphism Program.
+* License		:	Apache License Ver 2.0, www.apache.org/licenses/LICENSE-2.0
+* Description	:	CPP file for implementation of the VeintiunaGame Class.
+*
+* References	:	- Instruction by Dr Ling Ma <ling.ma@qmul.ac.uk>
+*					- Instruction by Dr Jeremy Gow <jeremy.gow@qmul.ac.uk>
+*                   - B. Stroustrup: The C++ Programming Language (Fourth Edition).
+*					  Addison Wesley. Reading Mass. USA. May 2013. ISBN 0-321-56384-0.
+*
+* Git Control	:	https://github.com/camiloblanco/CardGames/
+* Author - Year	:	Camilo Blanco Vargas	-	Apr-2020
+* Mail - Web	:	mail@camiloblanco.com	-	www.camiloblanco.com
+****************************************************************************************/
+
+/****************************************************************************************
+*								#INCLUDES AND #CONSTANTS								*
+****************************************************************************************/
 #include "VeintiunaGame.h"
+/****************************************************************************************
+*									MEMBER FUNCTIONS									*
+****************************************************************************************/
 
 // Main function to play a Twenty-One game
 int VeintiunaGame::playGame() {
-
 	cin.ignore();
 	// Game loop until "quit" input
 	string option="y";
@@ -11,6 +31,7 @@ int VeintiunaGame::playGame() {
 	{
 		//Check if he wants to play again.
 		if (option.compare("y") == 0) {
+			system("CLS");
 			cout << endl << " ********************************************************************************************" << endl;
 			cout << "				Twenty-One Game. Round:" << m_round + 1 << "							  " << endl;
 			cout << " ********************************************************************************************" << endl << endl;
@@ -88,18 +109,17 @@ int VeintiunaGame::playGame() {
 			cout << option << " is an invalid option, try again." << endl;
 			gameCtr = 1;
 		}
-		
 	}
 	return 0;
 }
 
-// Prompt the user for a face and suit guess
-
+// Function to prompt the user for his play and analisys
 int VeintiunaGame::playerPlay() {
-
+	//declare variables
 	string option;
 	int gameCtr = 1;
 	while (gameCtr==1){
+		//evaluate the game state or ask the player for input
 		if (m_playerHand.valuate() > 21) {
 			cout << endl << " Your hand is:" << endl;
 			m_playerHand.printSet();
@@ -122,6 +142,7 @@ int VeintiunaGame::playerPlay() {
 			gameCtr = 0;
 		}
 		else {
+			//ask the player for input
 			cout << endl << " Your hand is:" << endl;
 			m_playerHand.printSet();
 			cout << " Value: " << m_playerHand.valuate() << endl;
@@ -134,9 +155,11 @@ int VeintiunaGame::playerPlay() {
 			}
 			else if (option.compare("s")==0)
 			{
+				//stick
 				gameCtr = 0;
 			}
 			else if (option.compare("t")==0) {
+				//twist
 				m_playerHand.store(m_deck.deal());
 				gameCtr = 1;
 			}
@@ -146,14 +169,16 @@ int VeintiunaGame::playerPlay() {
 			}
 		}
 	}
+	//return the value of the hand
 	return m_playerHand.valuate();
 }
 
-
+// Implement the Bank playing logic
 int VeintiunaGame::bankPlay() {
-
+	// variable declaration
 	int gameCtr = 1;
 	while (gameCtr==1) {
+		//evaluate the game state or generate and automatic Bank input
 		if (m_bankHand.valuate() > 21) {
 			cout << endl << " The Bank hand is:" << endl;
 			m_bankHand.printSet();
@@ -176,30 +201,31 @@ int VeintiunaGame::bankPlay() {
 			gameCtr = 0;
 		}
 		else {
+			//Generate and automatic Bank input
 			cout << endl << " The Bank hand is:" << endl;
 			m_bankHand.printSet();
 			cout << " Value: " << m_bankHand.valuate() << endl;
 			cout << " [s]tick or [t]twist? ";
 			
 			if (m_bankHand.valuate() < m_playerHand.valuate()) {
-				//Introduce a dealy to mimic the Bank thinking
-				pauseAndPoint(3);
+				//Twist, and Introduce a dealy to mimic the Bank thinking
+				pauseAndPoint(2);
 				cout << "t"<<endl;
 				m_bankHand.store(m_deck.deal());
 			}
 			else  {
-				//Introduce a dealy to mimic the Bank thinking
-				pauseAndPoint(3);
+				//Stick, and Introduce a dealy to mimic the Bank thinking
+				pauseAndPoint(2);
 				cout << "s"<<endl;
 				gameCtr = 0;
 			}
 		}
 	}
+	//return the value of the hand
 	return m_bankHand.valuate();
 }
 
 // Prepare to start a new round
-
 void VeintiunaGame::newRound() {
 
 	//Increment the round 

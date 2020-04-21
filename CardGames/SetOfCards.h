@@ -61,12 +61,10 @@ public:
 
 protected:
 
-	// private member functions
-
-	// member variables
-	vector<Card> m_set; //Vector of Cards to represent Any set of cards (Decks, Hands, Etc)
-	const vector <string> m_suits = { "clubs","diamonds","hearts","spades" }; //Vector for suits names
-	map<string, int> m_faces; //A map for face names ans specific values for the game
+	// protected member variables
+	vector<Card> m_set;		//Vector of Cards to represent Any set of cards (Decks, Hands, Etc)
+	const vector <string> m_suits = { "clubs","diamonds","hearts","spades" };	//Const Vector for suits names common to all derived clases
+	map<string, int> m_faces;	 //A map for face names ans specific values for the game
 	
 };
 

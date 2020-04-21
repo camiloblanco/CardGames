@@ -1,4 +1,25 @@
+/****************************************************************************************
+* Project		:	Card Games, a C++ Abstraction, Inheritance and Polymorphism Program.
+* License		:	Apache License Ver 2.0, www.apache.org/licenses/LICENSE-2.0
+* Description	:	CPP file for implementation of the GuessingGame Class.
+*
+* References	:	- Instruction by Dr Ling Ma <ling.ma@qmul.ac.uk>
+*					- Instruction by Dr Jeremy Gow <jeremy.gow@qmul.ac.uk>
+*                   - B. Stroustrup: The C++ Programming Language (Fourth Edition).
+*					  Addison Wesley. Reading Mass. USA. May 2013. ISBN 0-321-56384-0.
+*
+* Git Control	:	https://github.com/camiloblanco/CardGames/
+* Author - Year	:	Camilo Blanco Vargas	-	Apr-2020
+* Mail - Web	:	mail@camiloblanco.com	-	www.camiloblanco.com
+****************************************************************************************/
+
+/****************************************************************************************
+*								#INCLUDES AND #CONSTANTS								*
+****************************************************************************************/
 #include "GuessingGame.h"
+/****************************************************************************************
+*									MEMBER FUNCTIONS									*
+****************************************************************************************/
 
 // Main function to play a Guessing Game.
 int GuessingGame::playGame() {
@@ -110,12 +131,10 @@ int GuessingGame::playerPlay(string& face, string& suit) {
 			return -1;
 		}
 	}
-
 	return 1;
 }
 
 // Evaluate the face and suit given by the user
-
 int GuessingGame::evaluateRound(string& face, string& suit) {
 	//Initialize and read variables
 	int hits = 0;

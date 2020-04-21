@@ -1,7 +1,7 @@
 /****************************************************************************************
 * Project		:	Card Games, a C++ Abstraction, Inheritance and Polymorphism Program.
 * License		:	Apache License Ver 2.0, www.apache.org/licenses/LICENSE-2.0
-* Description	:	Header and implementation file for the VeintiunaCardSet Derived Class
+* Description	:	Header file for the CardGame Derived Abstract Class
 *
 * References	:	- Instruction by Dr Ling Ma <ling.ma@qmul.ac.uk>
 *					- Instruction by Dr Jeremy Gow <jeremy.gow@qmul.ac.uk>
@@ -17,31 +17,31 @@
 *							#GUARDS #INCLUDES AND #CONSTANTS							*
 ****************************************************************************************/
 #pragma once
-#include "SetOfCards.h"
+#include "Game.h"
+#include "GuessingCardSet.h"
+#include "VeintiunaCardSet.h"
+using namespace std;
 /****************************************************************************************
 *									CLASS DECLARATION									*
 ****************************************************************************************/
-class VeintiunaCardSet : public SetOfCards
+template <class T>
+class CardGame : public Game
 {
 public:
-	// Constructors
-	VeintiunaCardSet() {
-		m_faces = {
-			{"ace",1},
-			{"two",2},
-			{"three",3},
-			{"four",4},
-			{"five",5},
-			{"six",6},
-			{"seven",7},
-			{"eight",8},
-			{"nine",9},
-			{"ten",10},
-			{"jack",10},
-			{"queen",10},
-			{"king",10}
-		};
-	}
-};
+	//constructors
+	CardGame();
+	void newGame();
+	virtual int playGame()=0;
+	void printStats();
 
-//No further need of implementation
+protected:
+	//protected functions
+	void pauseAndPoint(int numPoints);
+	//protected variable members
+	T m_deck;
+	T m_playerHand;
+	T m_bankHand;
+};
+//Include the implementation file so the compiler can solve the template <class T>
+#include "CardGame.cpp"
+

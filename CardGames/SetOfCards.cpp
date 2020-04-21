@@ -1,7 +1,7 @@
 /****************************************************************************************
 * Project		:	Card Games, a C++ Abstraction, Inheritance and Polymorphism Program.
 * License		:	Apache License Ver 2.0, www.apache.org/licenses/LICENSE-2.0
-* Description	:	CPP file for implementarion of the SetOfCards Class.
+* Description	:	CPP file for implementation of the SetOfCards Class.
 *
 * References	:	- Instruction by Dr Ling Ma <ling.ma@qmul.ac.uk>
 *					- Instruction by Dr Jeremy Gow <jeremy.gow@qmul.ac.uk>
@@ -16,9 +16,7 @@
 /****************************************************************************************
 *								#INCLUDES AND #CONSTANTS								*
 ****************************************************************************************/
-
 #include "SetOfCards.h"
-
 /****************************************************************************************
 *									MEMBER FUNCTIONS									*
 ****************************************************************************************/
@@ -97,25 +95,21 @@ void SetOfCards::printSuits() {
 	cout << "|" << endl;
 }
 
-// Print all the posible faces in the SetOfCards
+// Print all the posible faces in the SetOfCards for testing the program
 void SetOfCards::printFaces() {
 	typedef pair<string, int> cardPair;
 
-	// create an empty vector of pairs
+	// create a vector of pairs and copy from the m_faces to the vector
 	vector<cardPair> pairsVec;
-
-	// copy key-value pairs from the map to the vector
 	copy(m_faces.begin(), m_faces.end(),back_inserter<vector<cardPair>>(pairsVec));
 
-	// sort the vector by increasing order of its pair's second value
-	// if second value are equal, order by the pair's first value
-	sort(pairsVec.begin(), pairsVec.end(),[](const cardPair& l, const cardPair& r) {
-			if (l.second != r.second)
-				return l.second < r.second;
-			return l.first < r.first;
+	// sort the vector by m_faces's second value and print
+	sort(pairsVec.begin(), pairsVec.end(),[](const cardPair& left, const cardPair& right){
+			//Inline function
+			if (left.second != right.second)
+				return left.second < right.second;
+			return left.first < right.first;
 		});
-
-	// print the vector
 	for (auto const& pair : pairsVec)
 		cout << "| " <<pair.first << " ";
 	cout << "|" << endl;

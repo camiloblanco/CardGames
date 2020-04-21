@@ -16,9 +16,7 @@
 /****************************************************************************************
 *								#INCLUDES AND #CONSTANTS								*
 ****************************************************************************************/
-
 #include "Card.h"
-
 /****************************************************************************************
 *									MEMBER FUNCTIONS									*
 ****************************************************************************************/
@@ -26,14 +24,12 @@
 Card::Card() {}
 Card::Card(string suit, string face) : m_suit(suit), m_face(face) {}
 
-//public member functions
-
 //Get-Set functions
 string Card :: getSuit(){ return m_suit; }
 string Card :: getface(){ return m_face; }
 
 //print function
-void Card::print() { cout <<" -"<< m_face << " of " << m_suit << endl; }
+void Card::print() { cout <<" - "<< m_face << " of " << m_suit <<"."<<endl; }
 
 //Destructors
 Card::~Card(){}

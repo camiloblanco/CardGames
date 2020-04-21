@@ -147,15 +147,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CardGames.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Card.cpp" />
-    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="CardGame.cpp" />
     <ClCompile Include="GuessingGame.cpp" />
     <ClCompile Include="SetOfCards.cpp" />
     <ClCompile Include="VeintiunaGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h" />
+    <ClInclude Include="CardGame.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GuessingCardSet.h" />
     <ClInclude Include="GuessingGame.h" />

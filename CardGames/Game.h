@@ -1,7 +1,7 @@
 /****************************************************************************************
 * Project		:	Card Games, a C++ Abstraction, Inheritance and Polymorphism Program.
 * License		:	Apache License Ver 2.0, www.apache.org/licenses/LICENSE-2.0
-* Description	:	Header file for the Game Class
+* Description	:	Header file for the Game Partent Abstract Class
 *
 * References	:	- Instruction by Dr Ling Ma <ling.ma@qmul.ac.uk>
 *					- Instruction by Dr Jeremy Gow <jeremy.gow@qmul.ac.uk>
@@ -23,34 +23,21 @@
 #include <stdlib.h>
 #include <chrono>
 #include <thread>
-#include "GuessingCardSet.h"
-#include "VeintiunaCardSet.h"
-
 using namespace std;
-
 /****************************************************************************************
 *									CLASS DECLARATION									*
 ****************************************************************************************/
-template <class T>
 class Game
 {
 public:
 	//constructors
-	Game();
-	void newGame();
-	virtual int playGame()=0;
-	void printStats();
+	Game() { m_round = 0; }
+	virtual void newGame() = 0;
+	virtual int playGame() = 0;
 
 protected:
-
-	void pauseAndPoint(int numPoints);
-
-	T m_deck;
-	T m_playerHand;
-	T m_bankHand;
+	//protected variable members
 	vector<string> m_results;
 	int m_round;
 };
-
-#include "Game.cpp"
 

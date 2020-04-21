@@ -42,8 +42,6 @@ public:
 
 private:
 
-	// private member functions
-	
 	// member variables
 	string m_suit, m_face;
 };

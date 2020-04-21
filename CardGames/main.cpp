@@ -18,7 +18,6 @@
 ****************************************************************************************/
 #include "GuessingGame.h"
 #include "VeintiunaGame.h"
-
 /****************************************************************************************
 *									APPLICATION MAIN									*
 ****************************************************************************************/
@@ -35,14 +34,12 @@ void menuPause() {
 	cin.get();
 }
 
+// main function, entry point.
 int main()
-
 {
-	GuessingGame guessingGame;
-	VeintiunaGame veintiunaGame;
-
+	//variable declaration
 	int option = 9;
-
+	//loop for menu
 	while (option != 0) {
 		system("CLS");
 		cout << " ********************************************************************************************" << endl;
@@ -55,14 +52,18 @@ int main()
 		cout << " Note: In the games you can type \"quit\" at any time to return to this menu." << endl;
 		cout << " ********************************************************************************************" << endl;
 		cout << endl << " Please enter the option number: ";
+		//read the user option and evaluate
 		cin >> option;
-		if (option == 1) {
-			guessingGame.newGame();
-			guessingGame.playGame();
-		}
-		else if (option == 2) {
-			veintiunaGame.newGame();
-			veintiunaGame.playGame();
+		if (option == 1 || (option == 2)) {
+			//Execute the selected game polymorphically.
+			Game* gamePTR;
+			if (option == 1)
+				gamePTR = new GuessingGame();
+			else 
+				gamePTR = new VeintiunaGame();
+			gamePTR->newGame();
+			gamePTR->playGame();
+			delete gamePTR;
 		}
 		else if (option == 0) {
 			cout << endl << " Thank you for playing, have a nice day. " << endl << endl;
